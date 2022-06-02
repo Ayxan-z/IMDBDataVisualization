@@ -1,3 +1,4 @@
+from matplotlib.pyplot import bar
 import pandas as pd
 import plotly.express as px
 from collections import Counter
@@ -26,10 +27,21 @@ class App():
     
     def createPieChart(self, data: pd.DataFrame, genres_type: str, selected_genres: List[str]):
         genres_count = self.getDataGenresCount(data, genres_type)
+        if len(selected_genres) < 2: return None
         df = pd.DataFrame({'title': genres_count.keys(), 'count': genres_count.values()}).\
             query('title == @selected_genres')
         pie_chart = px.pie(df, names='title', values='count', title=genres_type + ' genres')
         return pie_chart
+
+    def createBarChart(self, data: pd.DataFrame, genres_type: str, selected_genres: List[str]):
+        genres_count = self.getDataGenresCount(data, genres_type)
+        if len(selected_genres) < 2: return None
+        genres_count_selected = {}
+        for i, j in genres_count.items():
+            if i in selected_genres:
+                genres_count_selected[i] = j
+        bar_chart = px.bar(x=genres_count_selected.keys(), y=genres_count_selected.values())
+        return bar_chart
 
     def preprocessingData(self, upload_file: str) -> Optional[pd.DataFrame]:
         if upload_file is not None:
