@@ -1,14 +1,14 @@
 [tool.poetry]
-name = "imdb_data_visualization"
+name = "imdbdatavisualization"
 version = "0.1.0"
 description = ""
-authors = ["Ayxan <ayxan.shahsuvarov1@gmail.com>"]
+authors = ["ayxan <ayxan.shahsuvarov1@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-pandas = "^1.4.2"
-plotly = "^5.8.0"
-streamlit = "^1.9.2"
+pandas = "^1.4.3"
+plotly = "^5.9.0"
+streamlit = "^1.11.0"
 
 [tool.poetry.dev-dependencies]
 
